@@ -34,11 +34,10 @@ const PRODUCTS = [
 const CATEGORIES = ["All", ...new Set(PRODUCTS.map(p => p.category))];
 const formIcons = { Tab: "💊", Capsule: "💊", Injection: "💉", Syrup: "🧴", "Cough Syrup": "🧴", "Dry Syrup": "🧴", Cream: "🧴", Suspension: "🧴", Mouthwash: "🧴", "Syrup 200ml": "🧴", "Tab 625mg": "💊" };
 
-const WA_NUMBER = "919205628098";
-const WA_LINK = "https://wa.me/919205628098?text=" + encodeURIComponent("Hello Rose Pharmaco, I'm interested in your products. Please share more details.");
-const makeProductWA = (name) => "https://wa.me/919205628098?text=" + encodeURIComponent(`Hi, I'd like to enquire about ${name}. Please share pricing and availability.`);
+const WA_NUMBER = "919205864084";
+const WA_LINK = "https://wa.me/919205864084?text=" + encodeURIComponent("Hello Rose Pharmaco, I'm interested in your products. Please share more details.");
+const makeProductWA = (name) => "https://wa.me/919205864084?text=" + encodeURIComponent(`Hi, I'd like to enquire about ${name}. Please share pricing and availability.`);
 
-/* ── SVG Logo ── */
 function RoseLogo({ size = 40, light = false }) {
   return (
     <svg width={size} height={size} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +59,6 @@ function PhoneIcon({ size = 16 }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>;
 }
 
-/* ── Hooks ── */
 function useInView(threshold = 0.15) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -83,7 +81,6 @@ function FadeIn({ children, delay = 0, className = "" }) {
   );
 }
 
-/* ── Navbar ── */
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -94,7 +91,6 @@ function Navbar() {
   }, []);
   const links = [["home","Home"],["products","Products"],["about","About"],["contact","Contact"]];
   const nav = (e, id) => { e.preventDefault(); setOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
-
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: scrolled ? "rgba(255,255,255,0.97)" : "transparent", backdropFilter: scrolled ? "blur(12px)" : "none", borderBottom: scrolled ? "1px solid #eee" : "none", transition: "all 0.35s ease" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 72 }}>
@@ -110,8 +106,7 @@ function Navbar() {
             <a key={id} href={`#${id}`} onClick={(e) => nav(e, id)} style={{ textDecoration: "none", fontSize: 13, fontWeight: 500, color: scrolled ? "#555" : "rgba(255,255,255,0.85)", letterSpacing: "0.5px", transition: "color 0.3s", fontFamily: "'DM Sans', sans-serif", textTransform: "uppercase" }}>{label}</a>
           ))}
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ background: "#25D366", color: "#fff", padding: "10px 22px", borderRadius: 50, fontSize: 13, fontWeight: 600, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s", display: "inline-flex", alignItems: "center", gap: 8, boxShadow: "0 2px 12px rgba(37,211,102,0.25)" }} onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.05)"; e.currentTarget.style.boxShadow = "0 4px 20px rgba(37,211,102,0.35)"; }} onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(37,211,102,0.25)"; }}>
-            <WhatsAppIcon size={16} />
-            Order on WhatsApp
+            <WhatsAppIcon size={16} /> Order on WhatsApp
           </a>
         </div>
         <button onClick={() => setOpen(!open)} className="nav-hamburger" style={{ display: "none", background: "none", border: "none", cursor: "pointer", padding: 8 }}>
@@ -134,7 +129,6 @@ function Navbar() {
   );
 }
 
-/* ── Hero ── */
 function Hero() {
   return (
     <section id="home" style={{ minHeight: "100vh", background: "linear-gradient(165deg, #0a0f1a 0%, #1B2A4A 30%, #7F1D1D 65%, #B91C1C 100%)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
@@ -168,7 +162,7 @@ function Hero() {
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ background: "#25D366", color: "#fff", padding: "16px 36px", borderRadius: 50, fontSize: 16, fontWeight: 600, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", display: "inline-flex", alignItems: "center", gap: 10, transition: "all 0.25s cubic-bezier(.16,1,.3,1)", boxShadow: "0 4px 24px rgba(37,211,102,0.3)" }} onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px) scale(1.03)"; e.currentTarget.style.boxShadow = "0 8px 36px rgba(37,211,102,0.4)"; }} onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0) scale(1)"; e.currentTarget.style.boxShadow = "0 4px 24px rgba(37,211,102,0.3)"; }}>
               <WhatsAppIcon size={20} /> Order on WhatsApp
             </a>
-            <a href="tel:+919205628098" style={{ border: "1px solid rgba(255,255,255,0.25)", color: "#fff", padding: "16px 36px", borderRadius: 50, fontSize: 16, fontWeight: 500, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "all 0.25s", display: "inline-flex", alignItems: "center", gap: 10, backdropFilter: "blur(4px)" }} onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)"; }} onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)"; }}>
+            <a href="tel:+919205864084" style={{ border: "1px solid rgba(255,255,255,0.25)", color: "#fff", padding: "16px 36px", borderRadius: 50, fontSize: 16, fontWeight: 500, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "all 0.25s", display: "inline-flex", alignItems: "center", gap: 10, backdropFilter: "blur(4px)" }} onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.4)"; }} onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)"; }}>
               <PhoneIcon size={18} /> Call Us
             </a>
           </div>
@@ -188,18 +182,11 @@ function Hero() {
   );
 }
 
-/* ── Trust Band ── */
 function TrustBand() {
   return (
     <div style={{ background: "#fff", borderBottom: "1px solid #f0f0f0", padding: "28px 24px", overflow: "hidden" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", gap: 40, flexWrap: "wrap" }}>
-        {[
-          { label: "GMP Certified", icon: "✅" },
-          { label: "WHO-GMP Standards", icon: "🌍" },
-          { label: "Manufactured by Akums", icon: "🏭" },
-          { label: "DCGI Approved", icon: "📋" },
-          { label: "Pan India Supply", icon: "🇮🇳" },
-        ].map((item, i) => (
+        {[{ label: "GMP Certified", icon: "✅" }, { label: "WHO-GMP Standards", icon: "🌍" }, { label: "Manufactured by Akums", icon: "🏭" }, { label: "DCGI Approved", icon: "📋" }, { label: "Pan India Supply", icon: "🇮🇳" }].map((item, i) => (
           <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, whiteSpace: "nowrap" }}>
             <span style={{ fontSize: 18 }}>{item.icon}</span>
             <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, color: "#555", letterSpacing: "0.3px" }}>{item.label}</span>
@@ -210,7 +197,6 @@ function TrustBand() {
   );
 }
 
-/* ── Product Card with Enquiry Button ── */
 function ProductCard({ product, index }) {
   const icon = formIcons[product.form] || "💊";
   return (
@@ -233,7 +219,6 @@ function ProductCard({ product, index }) {
   );
 }
 
-/* ── Products with Search ── */
 function Products() {
   const [filter, setFilter] = useState("All");
   const [search, setSearch] = useState("");
@@ -242,7 +227,6 @@ function Products() {
     const matchSearch = !search || p.name.toLowerCase().includes(search.toLowerCase()) || p.composition.toLowerCase().includes(search.toLowerCase());
     return matchCat && matchSearch;
   });
-
   return (
     <section id="products" style={{ padding: "100px 24px", background: "#FAFAFA" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -251,7 +235,6 @@ function Products() {
             <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, color: "#B91C1C", letterSpacing: "2px", textTransform: "uppercase" }}>Our Range</span>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 700, color: "#1a1a1a", margin: "12px 0 16px" }}>Product Catalog</h2>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "#888", maxWidth: 500, margin: "0 auto 28px" }}>Comprehensive range of quality pharmaceutical products for every therapeutic need</p>
-            {/* Search Bar */}
             <div style={{ maxWidth: 420, margin: "0 auto", position: "relative" }}>
               <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search products or compositions..." style={{ width: "100%", fontFamily: "'DM Sans', sans-serif", padding: "14px 18px 14px 44px", borderRadius: 50, border: "1px solid #e5e5e5", fontSize: 14, outline: "none", transition: "border-color 0.2s, box-shadow 0.2s", background: "#fff" }} onFocus={e => { e.target.style.borderColor = "#B91C1C"; e.target.style.boxShadow = "0 0 0 3px rgba(185,28,28,0.08)"; }} onBlur={e => { e.target.style.borderColor = "#e5e5e5"; e.target.style.boxShadow = "none"; }} />
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -285,7 +268,6 @@ function Products() {
   );
 }
 
-/* ── About ── */
 function About() {
   return (
     <section id="about" style={{ padding: "100px 24px", background: "#fff" }}>
@@ -295,32 +277,17 @@ function About() {
             <div>
               <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, color: "#B91C1C", letterSpacing: "2px", textTransform: "uppercase" }}>About Us</span>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, color: "#1a1a1a", margin: "12px 0 24px", lineHeight: 1.2 }}>Rose Never Compromises<br/>With Quality</h2>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "#666", lineHeight: 1.8, margin: "0 0 20px" }}>
-                Rose Pharmaco Private Limited is a Mumbai-based pharmaceutical brand established in 2000, committed to delivering world-class healthcare products across India. Our comprehensive range includes antibiotics, analgesics, vitamins, iron supplements, gastrointestinal care, and more.
-              </p>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "#666", lineHeight: 1.8, margin: "0 0 32px" }}>
-                All our products are manufactured by <strong style={{ color: "#1a1a1a" }}>Akums Drugs & Pharmaceuticals Ltd</strong> — one of India's largest and most trusted contract manufacturers, ensuring the highest standards of quality, safety, and compliance at every stage.
-              </p>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "#666", lineHeight: 1.8, margin: "0 0 20px" }}>Rose Pharmaco Private Limited is a Mumbai-based pharmaceutical brand established in 2000, committed to delivering world-class healthcare products across India.</p>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "#666", lineHeight: 1.8, margin: "0 0 32px" }}>All our products are manufactured by <strong style={{ color: "#1a1a1a" }}>Akums Drugs & Pharmaceuticals Ltd</strong> — one of India's largest and most trusted contract manufacturers.</p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ background: "#B91C1C", color: "#fff", padding: "12px 28px", borderRadius: 50, fontSize: 14, fontWeight: 600, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", display: "inline-flex", alignItems: "center", gap: 8, transition: "all 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "#991B1B"} onMouseLeave={e => e.currentTarget.style.background = "#B91C1C"}>
-                  Get in Touch <span>→</span>
-                </a>
-                <a href="tel:+919205628098" style={{ border: "1px solid #e5e5e5", color: "#555", padding: "12px 28px", borderRadius: 50, fontSize: 14, fontWeight: 500, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", display: "inline-flex", alignItems: "center", gap: 8, transition: "all 0.2s" }} onMouseEnter={e => e.currentTarget.style.borderColor = "#B91C1C"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e5e5e5"}>
-                  <PhoneIcon size={15} /> +91 92056 28098
-                </a>
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ background: "#B91C1C", color: "#fff", padding: "12px 28px", borderRadius: 50, fontSize: 14, fontWeight: 600, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", display: "inline-flex", alignItems: "center", gap: 8, transition: "all 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "#991B1B"} onMouseLeave={e => e.currentTarget.style.background = "#B91C1C"}>Get in Touch <span>→</span></a>
+                <a href="tel:+919205864084" style={{ border: "1px solid #e5e5e5", color: "#555", padding: "12px 28px", borderRadius: 50, fontSize: 14, fontWeight: 500, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", display: "inline-flex", alignItems: "center", gap: 8, transition: "all 0.2s" }} onMouseEnter={e => e.currentTarget.style.borderColor = "#B91C1C"} onMouseLeave={e => e.currentTarget.style.borderColor = "#e5e5e5"}><PhoneIcon size={15} /> +91 92058 64084</a>
               </div>
             </div>
           </FadeIn>
           <FadeIn delay={0.15}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-              {[
-                { icon: "🏭", title: "Akums Manufactured", desc: "Products by India's leading contract manufacturer" },
-                { icon: "✅", title: "GMP Certified", desc: "Good Manufacturing Practices compliance" },
-                { icon: "🚚", title: "Pan India Delivery", desc: "Direct supply across all states" },
-                { icon: "💊", title: "30+ Products", desc: "Comprehensive therapeutic range" },
-                { icon: "🏥", title: "Direct to Chemists", desc: "Competitive pricing, no middlemen" },
-                { icon: "📋", title: "Quality Assured", desc: "Stringent quality control at every step" },
-              ].map((item, i) => (
+              {[{ icon: "🏭", title: "Akums Manufactured", desc: "Products by India's leading contract manufacturer" }, { icon: "✅", title: "GMP Certified", desc: "Good Manufacturing Practices compliance" }, { icon: "🚚", title: "Pan India Delivery", desc: "Direct supply across all states" }, { icon: "💊", title: "30+ Products", desc: "Comprehensive therapeutic range" }, { icon: "🏥", title: "Direct to Chemists", desc: "Competitive pricing, no middlemen" }, { icon: "📋", title: "Quality Assured", desc: "Stringent quality control at every step" }].map((item, i) => (
                 <div key={i} style={{ background: "#FAFAFA", borderRadius: 16, padding: "24px 20px", border: "1px solid #f0f0f0", transition: "all 0.25s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = "#e0e0e0"; e.currentTarget.style.transform = "translateY(-2px)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = "#f0f0f0"; e.currentTarget.style.transform = "translateY(0)"; }}>
                   <span style={{ fontSize: 24 }}>{item.icon}</span>
                   <h4 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#1a1a1a", margin: "12px 0 4px" }}>{item.title}</h4>
@@ -335,7 +302,6 @@ function About() {
   );
 }
 
-/* ── CTA Banner ── */
 function CTABanner() {
   return (
     <section style={{ background: "linear-gradient(135deg, #1B2A4A 0%, #7F1D1D 100%)", padding: "64px 24px", textAlign: "center" }}>
@@ -343,19 +309,14 @@ function CTABanner() {
         <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(24px, 3.5vw, 36px)", fontWeight: 700, color: "#fff", margin: "0 0 16px" }}>Ready to Stock Quality Medicines?</h2>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "rgba(255,255,255,0.6)", margin: "0 0 32px", maxWidth: 500, marginLeft: "auto", marginRight: "auto" }}>Get competitive pricing, direct supply, and reliable delivery. No middlemen — just quality products from Rose Pharmaco.</p>
         <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ background: "#25D366", color: "#fff", padding: "14px 32px", borderRadius: 50, fontSize: 15, fontWeight: 600, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", display: "inline-flex", alignItems: "center", gap: 8, transition: "all 0.2s", boxShadow: "0 4px 20px rgba(37,211,102,0.3)" }} onMouseEnter={e => e.currentTarget.style.transform = "translateY(-2px)"} onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}>
-            <WhatsAppIcon size={18} /> WhatsApp Us Now
-          </a>
-          <a href="tel:+919205628098" style={{ border: "1px solid rgba(255,255,255,0.3)", color: "#fff", padding: "14px 32px", borderRadius: 50, fontSize: 15, fontWeight: 500, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", display: "inline-flex", alignItems: "center", gap: 8, transition: "all 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.1)"} onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
-            <PhoneIcon size={16} /> Call +91 92056 28098
-          </a>
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ background: "#25D366", color: "#fff", padding: "14px 32px", borderRadius: 50, fontSize: 15, fontWeight: 600, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", display: "inline-flex", alignItems: "center", gap: 8, transition: "all 0.2s", boxShadow: "0 4px 20px rgba(37,211,102,0.3)" }} onMouseEnter={e => e.currentTarget.style.transform = "translateY(-2px)"} onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}><WhatsAppIcon size={18} /> WhatsApp Us Now</a>
+          <a href="tel:+919205864084" style={{ border: "1px solid rgba(255,255,255,0.3)", color: "#fff", padding: "14px 32px", borderRadius: 50, fontSize: 15, fontWeight: 500, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", display: "inline-flex", alignItems: "center", gap: 8, transition: "all 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.1)"} onMouseLeave={e => e.currentTarget.style.background = "transparent"}><PhoneIcon size={16} /> Call +91 92058 64084</a>
         </div>
       </FadeIn>
     </section>
   );
 }
 
-/* ── Contact ── */
 function Contact() {
   const [form, setForm] = useState({ name: "", business: "", city: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -369,7 +330,6 @@ function Contact() {
   const inputStyle = { fontFamily: "'DM Sans', sans-serif", padding: "14px 18px", borderRadius: 12, border: "1px solid #e5e5e5", fontSize: 14, outline: "none", transition: "border-color 0.2s, box-shadow 0.2s" };
   const focusStyle = (e) => { e.target.style.borderColor = "#B91C1C"; e.target.style.boxShadow = "0 0 0 3px rgba(185,28,28,0.06)"; };
   const blurStyle = (e) => { e.target.style.borderColor = "#e5e5e5"; e.target.style.boxShadow = "none"; };
-
   return (
     <section id="contact" style={{ padding: "100px 24px", background: "#FAFAFA" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -378,37 +338,27 @@ function Contact() {
             <div>
               <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, color: "#B91C1C", letterSpacing: "2px", textTransform: "uppercase" }}>Contact</span>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, color: "#1a1a1a", margin: "12px 0 24px" }}>Let's Work Together</h2>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "#666", lineHeight: 1.8, margin: "0 0 40px" }}>
-                Whether you're a chemist, hospital, or distributor — we'd love to supply you with quality medicines at competitive rates.
-              </p>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: "#666", lineHeight: 1.8, margin: "0 0 40px" }}>Whether you're a chemist, hospital, or distributor — we'd love to supply you with quality medicines at competitive rates.</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                <a href="https://wa.me/919205628098" target="_blank" rel="noopener noreferrer" style={{ display: "flex", gap: 16, alignItems: "flex-start", textDecoration: "none", color: "inherit" }}>
+                <a href="https://wa.me/919205864084" target="_blank" rel="noopener noreferrer" style={{ display: "flex", gap: 16, alignItems: "flex-start", textDecoration: "none", color: "inherit" }}>
                   <div style={{ width: 44, height: 44, borderRadius: 12, background: "#f0fdf4", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}><WhatsAppIcon size={20} /></div>
-                  <div>
-                    <h4 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#1a1a1a", margin: "0 0 4px" }}>WhatsApp</h4>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#888", margin: 0 }}>+91 92056 28098</p>
-                  </div>
+                  <div><h4 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#1a1a1a", margin: "0 0 4px" }}>WhatsApp</h4><p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#888", margin: 0 }}>+91 92058 64084</p></div>
                 </a>
-                <a href="tel:+919205628098" style={{ display: "flex", gap: 16, alignItems: "flex-start", textDecoration: "none", color: "inherit" }}>
+                <a href="tel:+919205864084" style={{ display: "flex", gap: 16, alignItems: "flex-start", textDecoration: "none", color: "inherit" }}>
                   <div style={{ width: 44, height: 44, borderRadius: 12, background: "#FEF2F2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>📞</div>
-                  <div>
-                    <h4 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#1a1a1a", margin: "0 0 4px" }}>Phone</h4>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#888", margin: 0 }}>+91 92056 28098</p>
-                  </div>
+                  <div><h4 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#1a1a1a", margin: "0 0 4px" }}>Phone</h4><p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#888", margin: 0 }}>+91 92058 64084</p></div>
+                </a>
+                <a href="mailto:rosepharmaco.in@gmail.com" style={{ display: "flex", gap: 16, alignItems: "flex-start", textDecoration: "none", color: "inherit" }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: "#FEF2F2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>✉️</div>
+                  <div><h4 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#1a1a1a", margin: "0 0 4px" }}>Email</h4><p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#888", margin: 0 }}>rosepharmaco.in@gmail.com</p></div>
                 </a>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <div style={{ width: 44, height: 44, borderRadius: 12, background: "#FEF2F2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>📍</div>
-                  <div>
-                    <h4 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#1a1a1a", margin: "0 0 4px" }}>Mumbai Office</h4>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#888", margin: 0, lineHeight: 1.5 }}>Shop No.4, Usha Kunj, Juhu Tara Rd, Chandrabai Nagar, Juhu, Mumbai 400049</p>
-                  </div>
+                  <div><h4 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#1a1a1a", margin: "0 0 4px" }}>Mumbai Office</h4><p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#888", margin: 0, lineHeight: 1.5 }}>Shop No.4, Usha Kunj, Juhu Tara Rd, Chandrabai Nagar, Juhu, Mumbai 400049</p></div>
                 </div>
                 <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <div style={{ width: 44, height: 44, borderRadius: 12, background: "#FEF2F2", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>📍</div>
-                  <div>
-                    <h4 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#1a1a1a", margin: "0 0 4px" }}>Guwahati Office</h4>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#888", margin: 0, lineHeight: 1.5 }}>House No. 39, Krishna Nagar, Chatribari, Guwahati, Kamrup, Assam 781008</p>
-                  </div>
+                  <div><h4 style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: "#1a1a1a", margin: "0 0 4px" }}>Guwahati Office</h4><p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#888", margin: 0, lineHeight: 1.5 }}>House No. 39, Krishna Nagar, Chatribari, Guwahati, Kamrup, Assam 781008</p></div>
                 </div>
               </div>
             </div>
@@ -439,7 +389,6 @@ function Contact() {
   );
 }
 
-/* ── Footer ── */
 function Footer() {
   return (
     <footer style={{ background: "#0f1117", padding: "56px 24px 36px" }}>
@@ -455,12 +404,8 @@ function Footer() {
             </div>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.4)", margin: "0 0 16px", fontStyle: "italic" }}>"World Class Quality for Well Being"</p>
             <div style={{ display: "flex", gap: 10 }}>
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(37,211,102,0.12)", border: "1px solid rgba(37,211,102,0.2)", color: "#25D366", padding: "8px 16px", borderRadius: 50, fontSize: 12, fontWeight: 500, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "rgba(37,211,102,0.2)"} onMouseLeave={e => e.currentTarget.style.background = "rgba(37,211,102,0.12)"}>
-                <WhatsAppIcon size={13} /> WhatsApp
-              </a>
-              <a href="tel:+919205628098" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.6)", padding: "8px 16px", borderRadius: 50, fontSize: 12, fontWeight: 500, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.1)"} onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.05)"}>
-                <PhoneIcon size={12} /> Call
-              </a>
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(37,211,102,0.12)", border: "1px solid rgba(37,211,102,0.2)", color: "#25D366", padding: "8px 16px", borderRadius: 50, fontSize: 12, fontWeight: 500, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "rgba(37,211,102,0.2)"} onMouseLeave={e => e.currentTarget.style.background = "rgba(37,211,102,0.12)"}><WhatsAppIcon size={13} /> WhatsApp</a>
+              <a href="tel:+919205864084" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.6)", padding: "8px 16px", borderRadius: 50, fontSize: 12, fontWeight: 500, textDecoration: "none", fontFamily: "'DM Sans', sans-serif", transition: "all 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.1)"} onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.05)"}><PhoneIcon size={12} /> Call</a>
             </div>
           </div>
           <div style={{ display: "flex", gap: 40 }}>
@@ -483,7 +428,6 @@ function Footer() {
   );
 }
 
-/* ── Floating WhatsApp + Scroll to Top ── */
 function FloatingButtons() {
   const [pulse, setPulse] = useState(true);
   const [showTop, setShowTop] = useState(false);
@@ -495,9 +439,7 @@ function FloatingButtons() {
   }, []);
   return (
     <>
-      <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ position: "fixed", bottom: 24, right: 24, zIndex: 99, width: 60, height: 60, borderRadius: "50%", background: "#25D366", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", transition: "transform 0.25s cubic-bezier(.16,1,.3,1)", animation: pulse ? "wa-pulse 2s ease-in-out infinite" : "none", textDecoration: "none" }} onMouseEnter={e => e.currentTarget.style.transform = "scale(1.12)"} onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}>
-        <WhatsAppIcon size={28} />
-      </a>
+      <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ position: "fixed", bottom: 24, right: 24, zIndex: 99, width: 60, height: 60, borderRadius: "50%", background: "#25D366", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", transition: "transform 0.25s cubic-bezier(.16,1,.3,1)", animation: pulse ? "wa-pulse 2s ease-in-out infinite" : "none", textDecoration: "none" }} onMouseEnter={e => e.currentTarget.style.transform = "scale(1.12)"} onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}><WhatsAppIcon size={28} /></a>
       {showTop && (
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ position: "fixed", bottom: 96, right: 30, zIndex: 99, width: 44, height: 44, borderRadius: "50%", background: "rgba(0,0,0,0.6)", border: "none", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", backdropFilter: "blur(8px)", transition: "all 0.2s", boxShadow: "0 2px 12px rgba(0,0,0,0.15)" }} onMouseEnter={e => e.currentTarget.style.background = "rgba(0,0,0,0.8)"} onMouseLeave={e => e.currentTarget.style.background = "rgba(0,0,0,0.6)"}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
@@ -507,7 +449,6 @@ function FloatingButtons() {
   );
 }
 
-/* ── App ── */
 export default function App() {
   return (
     <>
@@ -517,10 +458,7 @@ export default function App() {
         html { scroll-behavior: smooth; }
         body { background: #fff; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
         @keyframes wa-pulse { 0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 36px rgba(37,211,102,0.6), 0 0 0 14px rgba(37,211,102,0.08); } }
-        @media (max-width: 768px) {
-          .nav-links-desktop { display: none !important; }
-          .nav-hamburger { display: block !important; }
-        }
+        @media (max-width: 768px) { .nav-links-desktop { display: none !important; } .nav-hamburger { display: block !important; } }
         @media (min-width: 769px) { .nav-mobile-menu { display: none !important; } }
         ::selection { background: #B91C1C; color: #fff; }
         a { -webkit-tap-highlight-color: transparent; }
